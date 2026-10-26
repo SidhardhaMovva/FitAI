@@ -1,27 +1,40 @@
-# My Fit AI
+# FitAI
 
-Your AI-powered fitness companion for personalized workouts, nutrition, and health tracking.
+An AI fitness companion — personalized workout and nutrition plans with health tracking, built with Flutter and Firebase.
 
-**By Jeevan Sidhardha Movva**
+## Features
 
-## Firebase (after rebranding)
+- **Onboarding** — personal info, fitness goals, workout preferences, and nutrition/health intake, ending in a summary profile
+- **Workouts** — plan setup, exercise catalog, guided workout screens, session logging, exercise logs, and a workout calendar
+- **Nutrition** — nutrition plans and daily tracking
+- **Health dashboard & progress** — health data, progress screens, and profile management
+- **AI chat** — an in-app AI chat for fitness and nutrition questions
 
-The app uses **com.jeeva.fitai** (Android) and **com.jeeva.fitai** (iOS/macOS) as package/bundle IDs. To use Firebase with this app:
+## Tech
 
-1. In [Firebase Console](https://console.firebase.google.com), open your project (or create one).
-2. **Android:** Add an app with package name `com.jeeva.fitai`, then download the new `google-services.json` into `android/app/`.
-3. **iOS:** Add an app with bundle ID `com.jeeva.fitai`, then download the new `GoogleService-Info.plist` into `ios/Runner/`.
-4. Run `dart run flutterfire configure` to regenerate `lib/firebase_options.dart` if needed.
+- Flutter / Dart (Android, iOS, web, and desktop targets)
+- Firebase — Auth, Firestore (see `firestore.rules` and `firestore.indexes.json`), and Cloud Functions (`functions/`)
 
-## Getting Started
+## Run it
 
-This project is a Flutter application.
+```bash
+flutter pub get
+flutter run
+```
 
-A few resources to get you started:
+This app expects a Firebase project. After creating one:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. **Android:** add an app with package name `com.jeeva.fitai`, then download `google-services.json` into `android/app/`
+2. **iOS:** add an app with bundle ID `com.jeeva.fitai`, then download `GoogleService-Info.plist` into `ios/Runner/`
+3. Or regenerate the config with `dart run flutterfire configure`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Structure
+
+```
+lib/
+  models/     user profile, workout/nutrition plans, health data, logs
+  providers/  user, workout, nutrition, chat, theme state
+  screens/    onboarding, home, workout, nutrition, health, progress, chat, profile
+  services/   app services (including the AI agent service)
+functions/    Firebase Cloud Functions
+```
